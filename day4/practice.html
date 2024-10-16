@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문제1</h1>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <br>
+    <div>
+        <span id="answer" style="color:red"></span>
+    </div>
+
+    <h1>문제2</h1>
+    <input type ="text" name="username" id="name-input">
+
+    <button id="cancel" style="visibility: hidden; width:100px;" onclick="clearTimeout(timer)">취소</button>
+    
+    <br>
+
+    <span id="nameAnswer" style="color:red; font-weight:bold"></span>
+</body>
+<script>
+    const input1 = document.getElementById('num1');
+    const input2 = document.getElementById('num2');
+    const sumResult = document.getElementById('answer');
+
+    let num1 = 0;
+    let num2 = 0;
+    
+    input1.addEventListener('input', (event) => {
+        num1 = input1.value
+        sumResult.innerText = parseInt(num1) + parseInt(num2)
+    })
+
+    input2.addEventListener('input', (event) => {
+        num2 = input2.value
+        sumResult.innerText = parseInt(num1) + parseInt(num2)
+    })
+
+    const setName = (name) => {
+        document.getElementById('nameAnswer').innerText = name
+    }
+
+    const getName =  document.getElementById('name-input');
+
+    let timer; 
+    
+    getName.addEventListener('input', (event) => {
+        document.getElementById('cancel').style.visibility = 'visible';
+        timer = setTimeout(() => {
+            setName(getName.value);
+            document.getElementById('cancel').style.visibility = 'hidden';
+        }, 3000)
+    })
+
+</script>
+</html>
